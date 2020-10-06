@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from "react-three-fiber";
 import Lights from "./Lights";
-import Ambient from "../../components/Ambient";
+import Ambient from "./Ambient";
 
 import { OrbitControls } from 'drei';
 
-function Sphere(props) {
+function Dodecahedron(props) {
   // This reference will give us direct access to the mesh
   const mesh = useRef()
 
@@ -18,21 +18,23 @@ function Sphere(props) {
       {...props}
       ref={mesh}
       scale={[1.5, 1.5, 1.5]}
+      
     >
-      <sphereBufferGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={'crimson'} />
+      <dodecahedronBufferGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color={'hotpink'} />
     </mesh>
   )
 }
 
-function Dark() {
+function Spin() {
   return (
     <Canvas>
       <Lights />
       <Ambient />
-      <Sphere position={[-1.2, 0, 0]} />
+      <Dodecahedron position={[-1.2, 0, 0]} />
+      <OrbitControls />
     </Canvas>
   );
 }
 
-export default Dark;
+export default Spin;
